@@ -4,7 +4,7 @@ library(quanteda)
 source(file_path_as_absolute("utils.R"))
 
 dataTrain <- csvRead('datasets/MS_Treino.csv', 20000)
-dataTest <- csvRead('datasets/MS_GS.csv', 20000)
+dataTest <- csvRead('datasets/MS_GS_v2.csv', 20000)
 
 allTexts <- rbind(dataTrain, dataTest)
 
@@ -90,6 +90,8 @@ require(caret)
 
 a <- apply(predictions, 1, which.max)
 aa <- a - 1
+
+which.max(predictions[40,])
 
 aa
 
