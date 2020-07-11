@@ -20,7 +20,8 @@ vocab_path = file.path(pretrained_path, 'vocab.txt')
 
 seq_length = 70L
 bch_size = 64
-epochs = 10
+#epochs = 10
+epochs = 1
 learning_rate = 1e-4
 
 DATA_COLUMN = 'text'
@@ -29,7 +30,7 @@ LABEL_COLUMN = 'categoria'
 train = data.table::fread('datasets/MS_Treino.csv')
 test = data.table::fread('datasets/MS_GS_v2.csv')
 
-for (i in 1:2) {
+for (i in 1:1) {
   ### Rede
 
   library(reticulate)
@@ -61,7 +62,6 @@ for (i in 1:2) {
   }
 
   c(x_train,x_segment, y_train) %<-% dt_data(train)
-  y_train <- to_categorical(y_train)
 
   train = do.call(cbind,x_train) %>% t()
   segments = do.call(cbind,x_segment) %>% t()
@@ -69,7 +69,6 @@ for (i in 1:2) {
   concat = c(list(train ),list(segments))
 
   c(x_test,x_segment_test, y_test) %<-% dt_data(test)
-  y_test <- to_categorical(y_test)
 
   test_validate = do.call(cbind, x_test) %>% t()
   segments_test = do.call(cbind, x_segment_test) %>% t()
@@ -106,7 +105,7 @@ for (i in 1:2) {
 
   history <- model %>% fit(
     concat,
-    targets,
+    to_categorical(targets),
     epochs=epochs,
     batch_size=bch_size, validation_split=0.15)
   
@@ -115,7 +114,7 @@ for (i in 1:2) {
   
   predictions <- model %>% predict(dados_test)
   predictionsMax <- apply(predictions, 1, which.max) - 1
-  matriz <- confusionMatrix(as.factor(dataTest$categoria), as.factor(predictionsMax))
+  matriz <- confusionMatrix(as.factor(to_categorical(dataTest$categoria)), as.factor(predictionsMax))
   addResult(matriz)
   resultados
 }
