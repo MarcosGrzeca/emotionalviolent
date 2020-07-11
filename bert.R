@@ -21,7 +21,7 @@ vocab_path = file.path(pretrained_path, 'vocab.txt')
 seq_length = 70L
 bch_size = 64
 #epochs = 10
-epochs = 1
+epochs = 3
 learning_rate = 1e-4
 
 DATA_COLUMN = 'text'
@@ -109,14 +109,13 @@ for (i in 1:1) {
     epochs=epochs,
     batch_size=bch_size, validation_split=0.15)
   
-  
   history
   
-  predictions <- model %>% predict(dados_test)
+  predictions <- model %>% predict(concat_test)
   predictionsMax <- apply(predictions, 1, which.max) - 1
-  matriz <- confusionMatrix(as.factor(to_categorical(dataTest$categoria)), as.factor(predictionsMax))
+  matriz <- confusionMatrix(as.factor(targets_test), as.factor(predictionsMax))
   addResult(matriz)
   resultados
 }
 
-dumpResults()
+dumpResults("bert.txt")

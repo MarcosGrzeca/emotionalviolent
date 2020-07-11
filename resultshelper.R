@@ -29,7 +29,7 @@ addResult <- function(matriz) {
 
 }
 
-dumpResults <- function() {
-	write.table(resultados, file = "marcos.txt", sep = "\t",
+dumpResults <- function(fileName) {
+	write.table(resultados, file = fileName, sep = "\t",
             row.names = TRUE, col.names = NA, quote = FALSE)
 }
