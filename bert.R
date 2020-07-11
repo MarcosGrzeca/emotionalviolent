@@ -61,6 +61,7 @@ for (i in 1:2) {
   }
 
   c(x_train,x_segment, y_train) %<-% dt_data(train)
+  y_train <- to_categorical(y_train)
 
   train = do.call(cbind,x_train) %>% t()
   segments = do.call(cbind,x_segment) %>% t()
@@ -68,6 +69,7 @@ for (i in 1:2) {
   concat = c(list(train ),list(segments))
 
   c(x_test,x_segment_test, y_test) %<-% dt_data(test)
+  y_test <- to_categorical(y_test)
 
   test_validate = do.call(cbind, x_test) %>% t()
   segments_test = do.call(cbind, x_segment_test) %>% t()
