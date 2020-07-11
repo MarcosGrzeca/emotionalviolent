@@ -21,16 +21,16 @@ vocab_path = file.path(pretrained_path, 'vocab.txt')
 seq_length = 70L
 bch_size = 64
 #epochs = 10
-epochs = 3
+epochs = 4
 learning_rate = 1e-4
 
-DATA_COLUMN = 'text'
-LABEL_COLUMN = 'categoria'
-
-train = data.table::fread('datasets/MS_Treino.csv')
-test = data.table::fread('datasets/MS_GS_v2.csv')
 
 for (i in 1:3) {
+  DATA_COLUMN = 'text'
+  LABEL_COLUMN = 'categoria'
+
+  train = data.table::fread('datasets/MS_Treino.csv')
+  test = data.table::fread('datasets/MS_GS_v2.csv')
   ### Rede
 
   library(reticulate)
@@ -107,7 +107,7 @@ for (i in 1:3) {
     concat,
     to_categorical(targets),
     epochs=epochs,
-    batch_size=bch_size, validation_split=0.20)
+    batch_size=bch_size, validation_split=0.15)
   
   history
   
@@ -116,6 +116,7 @@ for (i in 1:3) {
   matriz <- confusionMatrix(factor(targets_test, levels = c("0", "1", "2", "3", "4", "5")), factor(predictionsMax, levels = c("0", "1", "2", "3", "4", "5")))
   addResult(matriz)
   resultados
+  dumpResults("bert.txt")
 }
 
 dumpResults("bert.txt")
