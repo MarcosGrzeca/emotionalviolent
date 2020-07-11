@@ -107,7 +107,7 @@ for (i in 1:1) {
     concat,
     to_categorical(targets),
     epochs=epochs,
-    batch_size=bch_size, validation_split=0.15)
+    batch_size=bch_size, validation_split=0.20)
   
   history
   
