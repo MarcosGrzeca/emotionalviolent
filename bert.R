@@ -113,7 +113,7 @@ for (i in 1:1) {
   
   predictions <- model %>% predict(concat_test)
   predictionsMax <- apply(predictions, 1, which.max) - 1
-  matriz <- confusionMatrix(as.factor(targets_test), as.factor(predictionsMax))
+  matriz <- confusionMatrix(factor(targets_test, levels = c("0", "1", "2", "3", "4", "5")), factor(predictionsMax, levels = c("0", "1", "2", "3", "4", "5")))
   addResult(matriz)
   resultados
 }
