@@ -1,8 +1,7 @@
 library(tools)
 library(keras)
-library(quanteda)
 source(file_path_as_absolute("utils.R"))
-source(file_path_as_absolute("resultsHelper.R"))
+source(file_path_as_absolute("resultshelper.R"))
 
 for (i in 1:2) {
 
