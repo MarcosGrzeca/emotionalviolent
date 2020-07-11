@@ -29,4 +29,4 @@
  - dropout_keep_prob: 0.8
  - l2_reg_lambda: 3.0
  - epochs: 200
-- 
+ - c5d.4xlarge
