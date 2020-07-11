@@ -24,8 +24,10 @@ bch_size = 64
 epochs = 4
 learning_rate = 1e-4
 
-
-for (i in 1:3) {
+for (i in 1:10) {
+  if (i <= 3) {
+    next;
+  }
   DATA_COLUMN = 'text'
   LABEL_COLUMN = 'categoria'
 

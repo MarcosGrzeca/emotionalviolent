@@ -31,5 +31,5 @@ addResult <- function(matriz) {
 
 dumpResults <- function(fileName) {
 	write.table(resultados, file = fileName, sep = "\t",
-            row.names = TRUE, col.names = NA, quote = FALSE)
+            row.names = TRUE, col.names = NA, quote = FALSE, append = TRUE)
 }
