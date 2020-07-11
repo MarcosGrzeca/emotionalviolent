@@ -24,13 +24,12 @@ bch_size = 64
 epochs = 4
 learning_rate = 1e-4
 
-DATA_COLUMN = 'text'
-LABEL_COLUMN = 'categoria'
+for (i in 1:3) {
+  DATA_COLUMN = 'text'
+  LABEL_COLUMN = 'categoria'
 
-train = data.table::fread('datasets/MS_Treino_TR_Treino.csv')
-test = data.table::fread('datasets/MS_GS_v2.csv')
-
-for (i in 1:5) {
+  train = data.table::fread('datasets/MS_Treino_TR_Treino.csv')
+  test = data.table::fread('datasets/MS_GS_v2.csv')
   ### Rede
 
   library(reticulate)
@@ -116,6 +115,7 @@ for (i in 1:5) {
   matriz <- confusionMatrix(factor(targets_test, levels = c("0", "1", "2", "3", "4", "5")), factor(predictionsMax, levels = c("0", "1", "2", "3", "4", "5")))
   addResult(matriz)
   resultados
+  dumpResults("bert_with_tr.txt")
 }
 
 dumpResults("bert_with_tr.txt")
