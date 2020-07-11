@@ -30,7 +30,7 @@ LABEL_COLUMN = 'categoria'
 train = data.table::fread('datasets/MS_Treino.csv')
 test = data.table::fread('datasets/MS_GS_v2.csv')
 
-for (i in 1:1) {
+for (i in 1:3) {
   ### Rede
 
   library(reticulate)

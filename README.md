@@ -11,7 +11,8 @@
 
 ## BERT
 
-- bert
+- bert.R (MS_Treino => MS_GS_v2)
+- bert_with_tr.R (MS_Treino + TR_Treino => MS_GS_v2)
 
 
 ## bi-LSTM 
