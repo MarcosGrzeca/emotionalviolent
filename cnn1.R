@@ -6,27 +6,11 @@ source(file_path_as_absolute("resultsHelper.R"))
 
 for (i in 1:2) {
 
-  dataTrain <- csvRead('datasets/MS_Treino.csv', 20000)
-  dataTest <- csvRead('datasets/MS_GS_v2.csv', 20000)
-  
-  allTexts <- rbind(dataTrain, dataTest)
-  
-  maxlen <- 70
-  
-  tokenizer <-  text_tokenizer() %>%
-    fit_text_tokenizer(allTexts$text)
-  vocab_size <- length(tokenizer$word_index) + 1
-  vocab_size
-  
-  sequences_train <- texts_to_sequences(tokenizer, dataTrain$text)
-  dados_train <- pad_sequences(sequences_train, maxlen = maxlen)
-  
-  sequences_test <- texts_to_sequences(tokenizer, dataTest$text)
-  dados_test <- pad_sequences(sequences_test, maxlen = maxlen)
-  
+  source(file_path_as_absolute("getDados.R"))
+
   ### Rede
   
-  embedding_dims <- 128
+  embedding_dims <- 100
   filters <- 132
   
   main_input <- layer_input(shape = c(maxlen), dtype = "int32")
@@ -77,13 +61,14 @@ for (i in 1:2) {
     to_categorical(dataTrain$categoria),
     epochs = 10,
     batch_size = 64,
-    validation_split = 0.15,
-    callback = list(
-      callback_early_stopping(
-        monitor = "val_loss",
-        patience = 5
-      )
-    )
+    validation_split = 0.15
+    #,
+    #callback = list(
+    #  callback_early_stopping(
+    #    monitor = "val_loss",
+    #    patience = 5
+    #  )
+    #)
   )
   
   history
@@ -95,13 +80,4 @@ for (i in 1:2) {
   resultados
 }
 
-View(resultados)
-
-resultados
-
-dump(resultados)
-
-write.csv(resultados, "marcos.csv", sep = ",")
-
-write.table(resultados, file = "marcos.txt", sep = "\t",
-            row.names = TRUE, col.names = NA, quote = FALSE)
+dumpResults()

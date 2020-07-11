@@ -1,0 +1,1 @@
+	P-Surprise	P-Sadness	P-None	P-Fear	P-Disgust	P-Anger	R-Surprise	R-Sadness	R-None	R-Fear	R-Disgust	R-Anger	F1-Surprise	F1-Sadness	F1-None	F1-Fear	F1-Disgust	F1-Anger

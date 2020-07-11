@@ -1,3 +1,5 @@
+library(caret)
+
 getHeader <- function() {
   return (c("P-Surprise", "P-Sadness", "P-None", "P-Fear", "P-Disgust", "P-Anger", "R-Surprise", "R-Sadness", "R-None", "R-Fear", "R-Disgust", "R-Anger", "F1-Surprise", "F1-Sadness", "F1-None", "F1-Fear", "F1-Disgust", "F1-Anger"));
 }
@@ -25,4 +27,9 @@ addResult <- function(matriz) {
 	resultados <<- rbind(resultados, result)
 	names(resultados) <<- getHeader()
 
+}
+
+dumpResults <- function() {
+	write.table(resultados, file = "marcos.txt", sep = "\t",
+            row.names = TRUE, col.names = NA, quote = FALSE)
 }

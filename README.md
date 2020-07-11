@@ -1,6 +1,8 @@
 ## Treinamento
-- treinar em MS- treino e testar em ms-gold
-- treinar em MS-Treino + TR-Treino e testar em ms-gold
+- treinar em MS- treino e testar em ms-gold 
+- treinar em MS-Treino + TR-Treino e testar em ms-gold (trtreino)
+
+
 
 ## CNN
 
@@ -8,6 +10,8 @@
 
 
 ## BERT
+
+- bert
 
 
 ## bi-LSTM 
