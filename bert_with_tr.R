@@ -25,7 +25,7 @@ epochs = 4
 learning_rate = 1e-4
 
 for (i in 1:10) {
-  if (i <= 3) {
+  if (i <= 5) {
     next;
   }
   DATA_COLUMN = 'text'
