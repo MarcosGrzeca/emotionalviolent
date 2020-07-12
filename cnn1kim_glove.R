@@ -1,4 +1,4 @@
-setwd("D:/src/emotionalviolent");
+#setwd("D:/src/emotionalviolent");
 
 options(expressions = 5e5)
 memory.limit(size=12000000)
@@ -10,7 +10,7 @@ source(file_path_as_absolute("utils.R"))
 source(file_path_as_absolute("resultshelper.R"))
 source(file_path_as_absolute("datasets/gloveloader.R"))
 
-for (i in 1:2) {
+for (i in 1:10) {
 
   source(file_path_as_absolute("getDados.R"))
 
@@ -52,7 +52,7 @@ for (i in 1:2) {
   main_output <-  layer_concatenate(c(ccn_out_3, ccn_out_4, ccn_out_5)) %>% 
     layer_dropout(0.2) %>%
     layer_dense(units = 128, activation = "relu") %>%
-    layer_dense(units = 48, activation = "relu") %>%
+    layer_dense(units = 64, activation = "relu") %>%
     layer_dense(units = 6, activation = 'softmax')
   
   model <- keras_model(
@@ -83,7 +83,7 @@ for (i in 1:2) {
   history <- model %>% fit(
     dados_train,
     to_categorical(dataTrain$categoria),
-    epochs = 50,
+    epochs = 200,
     batch_size = 64,
     validation_split = 0.15
   )
@@ -97,4 +97,4 @@ for (i in 1:2) {
   resultados
 }
 
-dumpResults("kimglove.txt")
+dumpResults("kimglove_200epocas.txt")
