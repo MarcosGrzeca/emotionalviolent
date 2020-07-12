@@ -1,10 +1,16 @@
+setwd("D:/src/emotionalviolent");
+
+options(expressions = 5e5)
+memory.limit(size=12000000)
+
 library(tools)
 library(keras)
+
 source(file_path_as_absolute("utils.R"))
 source(file_path_as_absolute("resultshelper.R"))
 source(file_path_as_absolute("datasets/gloveloader.R"))
 
-for (i in 1:10) {
+for (i in 1:2) {
 
   source(file_path_as_absolute("getDados.R"))
 
@@ -55,17 +61,17 @@ for (i in 1:10) {
   )
 
   embedding_dim <- 100
-  embedding_matrix <- array(0, c(max_words, embedding_dim))
+  embedding_matrix <- array(0, c(vocab_size, embedding_dim))
   for (word in names(word_index)) {
     index <- word_index[[word]]
-    if (index < max_words) {
+    if (index < vocab_size) {
       embedding_vector <- embeddings_index[[word]]
       if (!is.null(embedding_vector))
         embedding_matrix[index+1,] <- embedding_vector
     }
   }
 
-  get_layer(model, index = 1) %>%
+  get_layer(model, index = 2) %>%
       set_weights(list(embedding_matrix))
   
   model %>% compile(
@@ -77,7 +83,7 @@ for (i in 1:10) {
   history <- model %>% fit(
     dados_train,
     to_categorical(dataTrain$categoria),
-    epochs = 10,
+    epochs = 50,
     batch_size = 64,
     validation_split = 0.15
   )

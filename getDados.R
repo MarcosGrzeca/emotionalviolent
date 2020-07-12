@@ -15,3 +15,4 @@ dados_train <- pad_sequences(sequences_train, maxlen = maxlen)
 
 sequences_test <- texts_to_sequences(tokenizer, dataTest$text)
 dados_test <- pad_sequences(sequences_test, maxlen = maxlen)
+word_index = tokenizer$word_index
