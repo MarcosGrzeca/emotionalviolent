@@ -1,0 +1,5 @@
+	P-Surprise	P-Sadness	P-None	P-Fear	P-Disgust	P-Anger	R-Surprise	R-Sadness	R-None	R-Fear	R-Disgust	R-Anger	F1-Surprise	F1-Sadness	F1-None	F1-Fear	F1-Disgust	F1-Anger
+	P-Surprise	P-Sadness	P-None	P-Fear	P-Disgust	P-Anger	R-Surprise	R-Sadness	R-None	R-Fear	R-Disgust	R-Anger	F1-Surprise	F1-Sadness	F1-None	F1-Fear	F1-Disgust	F1-Anger
+	P-Surprise	P-Sadness	P-None	P-Fear	P-Disgust	P-Anger	R-Surprise	R-Sadness	R-None	R-Fear	R-Disgust	R-Anger	F1-Surprise	F1-Sadness	F1-None	F1-Fear	F1-Disgust	F1-Anger
+	P-Surprise	P-Sadness	P-None	P-Fear	P-Disgust	P-Anger	R-Surprise	R-Sadness	R-None	R-Fear	R-Disgust	R-Anger	F1-Surprise	F1-Sadness	F1-None	F1-Fear	F1-Disgust	F1-Anger
+1	64.7058823529412	73.6842105263158	43.1372549019608	96.2962962962963	70	93.3333333333333	84.6153846153846	100	91.6666666666667	30.952380952381	77.7777777777778	77.7777777777778	73.3333333333333	84.8484848484849	58.6666666666667	46.8468468468469	73.6842105263158	84.8484848484848
