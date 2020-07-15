@@ -1,7 +1,7 @@
 #setwd("D:/src/emotionalviolent");
 
-options(expressions = 5e5)
-memory.limit(size=12000000)
+#options(expressions = 5e5)
+#memory.limit(size=12000000)
 
 library(tools)
 library(keras)
@@ -10,7 +10,7 @@ source(file_path_as_absolute("utils.R"))
 source(file_path_as_absolute("resultshelper.R"))
 source(file_path_as_absolute("datasets/gloveloader.R"))
 
-for (i in 5:10) {
+for (i in 1:10) {
 
   source(file_path_as_absolute("getDados_tr.R"))
 
@@ -53,7 +53,7 @@ for (i in 5:10) {
     }
   }
 
-  get_layer(model, index = 2) %>%
+  get_layer(model, index = 1) %>%
       set_weights(list(embedding_matrix))
   
   model %>% compile(
